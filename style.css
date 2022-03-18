@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap');
+
+body {
+	background-color: #eeefe6;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: 'Poppins', sans-serif;
+}
+
+.container {
+	width: 350px;
+	height: 500px;
+	border-radius: 21px;
+	background-color: #93c0a4;
+	border: 2px solid black;
+	box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+		rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+		rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.screen {
+	background-color: rgb(173, 173, 173);
+	width: 310px;
+	height: 100px;
+	position: relative;
+	top: 25px;
+	left: 18px;
+	border-radius: 12px;
+	border: 2px solid black;
+}
+
+.current_equation {
+	text-align: right;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin-bottom: 10px;
+	margin-right: 5px;
+	font-size: 32px;
+	font-weight: 400;
+}
+
+.last_equation {
+	text-align: right;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-top: 10px;
+	margin-right: 5px;
+	font-size: 22px;
+	font-weight: 400;
+}
+
+.clear_container {
+	position: relative;
+	left: 18px;
+	top: 35px;
+	height: 30px;
+	width: 330px;
+}
+
+.clear_buttons {
+	width: 102px;
+	height: 40px;
+	border-radius: 12px;
+	border: 2px solid black;
+	background-color: rgb(238, 61, 61);
+	font-size: 22px;
+	color: rgb(0, 0, 0);
+}
+
+.clear_buttons:hover {
+	background-color: rgb(218, 55, 55);
+}
+
+#backspace {
+	background-color: rgb(235, 162, 129);
+}
+
+#backspace:hover {
+	background-color: rgb(211, 146, 116);
+}
+
+.button_container {
+	position: relative;
+	top: 50px;
+	left: 14px;
+}
+
+.calc_button {
+	height: 70px;
+	width: 70px;
+	margin: 4px;
+	background-color: #dce2bd;
+	border: 2px solid black;
+	border-radius: 12px;
+	font-size: 24px;
+	font-family: 'Poppins', sans-serif;
+}
+
+.calc_button:hover {
+	background-color: #c6ccaa;
+}
+
+button:active {
+	transform: scale(0.98);
+}
