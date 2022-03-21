@@ -11,6 +11,7 @@ let lastOperationOutput = document.querySelector('.last_equation');
 let firstOperand = '';
 let secondOperand = '';
 let currentOperation = null;
+let isEvaluated = null;
 
 numberButtons.forEach((button) => {
 	button.addEventListener('click', () => appendNumber(button.id));
@@ -32,17 +33,9 @@ backspaceButton.addEventListener('click', () => {
 	backspace();
 });
 
-equalsButton.addEventListener('click', () => {
-	secondOperand = currentOperationOutput.innerText;
-	if (currentOperation === null) {
-		alert('Pick an operation.');
-		return;
-	} else if (secondOperand === '') {
-		alert('Enter in your second operand first.');
-		return;
-	}
-	eval();
-});
+equalsButton.addEventListener('click', eval);
+
+window.addEventListener('keydown', handleKeyInput);
 
 function appendNumber(number) {
 	currentOperationOutput.innerText += number;
@@ -82,18 +75,51 @@ function backspace() {
 		-1
 	);
 }
+
+function handleKeyInput(e) {
+	if (e.key >= 0 && e.key <= 9) appendNumber(e.key);
+	if (e.key === '=' || e.key === 'Enter') eval();
+	if (e.key === '.') addDecimal();
+	if (e.key === 'Backspace') backspace();
+	if (e.key === 'Delete') clear();
+	if (e.key === 'Escape') allClear();
+	if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/')
+		appendOperator(convertOperator(e.key));
+}
+
+function convertOperator(key) {
+	if (key === '/') return '÷';
+	if (key === '*') return '×';
+	if (key === '-') return '−';
+	if (key === '+') return '+';
+}
+
 function eval() {
-	if (currentOperation === '÷' && secondOperand === '0') {
+	secondOperand = currentOperationOutput.innerText;
+
+	if (currentOperationOutput.innerText === '') {
+		alert('Uhhh...type something please');
+		return;
+	} else if (currentOperation === null) {
+		alert('Choose an operation!');
+		return;
+	} else if (currentOperation === '÷' && secondOperand === '0') {
 		alert('Aht Aht! No dividing by 0!');
 		secondOperand = '';
 		currentOperationOutput.innerText = '';
 		return;
 	}
 	lastOperationOutput.innerText = `${firstOperand} ${currentOperation} ${secondOperand} =`;
+
 	currentOperationOutput.innerText =
 		Math.round(operate(currentOperation, firstOperand, secondOperand) * 1000) /
 		1000;
 }
+// function displayAnswer() {
+// 	secondOperand = currentOperationOutput.innerText;
+
+// 	eval();
+// }
 
 const add = (x, y) => {
 	return x + y;
